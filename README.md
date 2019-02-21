@@ -12,5 +12,5 @@ template project for chrome-extension
 
     npm run dev
 
-3. open chrome://extension load the plugin  
+3. open chrome://extensions load the plugin  
 
