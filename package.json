@@ -1,5 +1,5 @@
 {
-  "name": "Chrome extension template ",
+  "name": "gitlab_code_review",
   "version": "1.0.0",
   "description": "",
   "main": "contentScript.js",
