@@ -14,3 +14,7 @@ template project for chrome-extension
 
 3. open chrome://extensions load the plugin  
 
+4. setup
+
+open the options page, enter your token, click save button
+
