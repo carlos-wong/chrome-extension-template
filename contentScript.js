@@ -10,9 +10,7 @@ function InitPassBtn(){
     commentBtn.className = closeissueBtn.className;
     var textnode = document.createTextNode("Pass Softdev Code Review");  // Create a text node
     commentBtn.appendChild(textnode);
-    commentBtn.addEventListener('click', function() {
-      HandlePassClick();
-    });
+    commentBtn.onclick = HandlePassClick;
     commentDiv.appendChild(commentBtn);
   }
 }
@@ -20,7 +18,10 @@ function InitPassBtn(){
 function HandlePassClick(){
   let curURL = document.URL;
   let urlInfo = gitlab.GitlabParseURLInfo(curURL);
-  // gitlab.GitlabCommentMr(urlInfo.project,urlInfo.mr,"#pass",(data)=>{});
+  console.dir(urlInfo);
+  gitlab.GitlabCommentMr(urlInfo.project,urlInfo.mr,"#pass",(data)=>{
+    window.location.reload();
+  });
 }
 
 function myMain(){
