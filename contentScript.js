@@ -8,6 +8,7 @@ function InitPassBtn(){
   if(commentDiv && closeissueBtn){
     let commentBtn = document.createElement("Button");       // Create a <li> node
     commentBtn.className = closeissueBtn.className;
+    commentBtn.style.marginLeft = "6px";
     var textnode = document.createTextNode("Pass Softdev Code Review");  // Create a text node
     commentBtn.appendChild(textnode);
     commentBtn.onclick = HandlePassClick;
