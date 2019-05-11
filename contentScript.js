@@ -30,7 +30,7 @@ function myMain(){
   let urlInfo = gitlab.GitlabParseURLInfo(curURL);
   gitlab.QueryProjectMr(urlInfo.project,urlInfo.mr,(data)=>{
     let assigneeUsername = data.assignee && data.assignee.username;
-    if(assigneeUsername === "carlos_softdev_merge_bot"){
+    if(assigneeUsername === "softdev_merge_bot"){
       InitPassBtn();
     }
   });
