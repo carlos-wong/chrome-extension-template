@@ -57,7 +57,7 @@ function GitlabCommentissue(project_id,iid,comment,callback){
 
 function GitlabParseURLInfo(url){
   let projectInfo = {};
-  [projectInfo.groupname,projectInfo.projectname,projectInfo.type,projectInfo.mr] =  lodash.split(lodash.split(url,"http://www.lejuhub.com/")[1],'/');
+  [projectInfo.groupname,projectInfo.projectname,projectInfo.type,projectInfo.mr] =  lodash.split(lodash.split(url,"https://www.lejuhub.com/")[1],'/');
   projectInfo.project = projectInfo.groupname + '/' + projectInfo.projectname;
   projectInfo.mr = parseInt(projectInfo.mr);
   return projectInfo;
