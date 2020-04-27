@@ -57,10 +57,9 @@ function GitlabCommentissue(project_id,iid,comment,callback){
 
 function GitlabParseURLInfo(url){
   let projectInfo = {};
-  [projectInfo.groupname,projectInfo.projectname,projectInfo.type,projectInfo.bar,projectInfo.mr] =  lodash.split(lodash.split(url,"www.lejuhub.com/")[1],'/');
   url_info_array = lodash.split(lodash.split(url,"www.lejuhub.com/")[1],'/');
-  var debug_url_info_to_filter = lodash.clone(url_info_array.splice(2));
-  [projectInfo.type,projectInfo.mr] = lodash.filter(debug_url_info_to_filter,(o)=>{return o !== "-";});
+  url_info_array = lodash.clone(url_info_array);
+  [projectInfo.groupname,projectInfo.projectname,projectInfo.type,projectInfo.mr] = lodash.filter(url_info_array,(o)=>{return o !== "-";});
   projectInfo.project = projectInfo.groupname + '/' + projectInfo.projectname;
   projectInfo.mr = parseInt(projectInfo.mr);
   return projectInfo;
