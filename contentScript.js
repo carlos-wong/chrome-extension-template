@@ -26,12 +26,19 @@ function HandlePassClick(){
 }
 
 function myMain(){
-  let curURL = document.URL;
-  let urlInfo = gitlab.GitlabParseURLInfo(curURL);
-  gitlab.QueryProjectMr(urlInfo.project,urlInfo.mr,(data)=>{
-    let assigneeUsername = data.assignee && data.assignee.username;
-    if(assigneeUsername === "softdev_merge_bot"){
-      InitPassBtn();
-    }
-  });
+  if(gitlab.getInstance()){
+    let curURL = document.URL;
+    let urlInfo = gitlab.GitlabParseURLInfo(curURL);
+    gitlab.QueryProjectMr(urlInfo.project,urlInfo.mr,(data)=>{
+      let assigneeUsername = data.assignee && data.assignee.username;
+      if(assigneeUsername === "softdev_merge_bot"){
+        InitPassBtn();
+      }
+    });
+  }else{
+    setTimeout(()=>{
+      myMain();
+    },100);
+  }
+
 }

@@ -14,9 +14,9 @@ chrome.storage.sync.get({
     });
   });
 
+
 function QueryProjectMr(project,iid,callback){
-  gitlab_axios_instance
-    .get(
+  gitlab_axios_instance && gitlab_axios_instance.get(
       "/projects/" +
         encodeURIComponent(project) +
         "/merge_requests/"+iid
@@ -57,10 +57,14 @@ function GitlabCommentissue(project_id,iid,comment,callback){
 
 function GitlabParseURLInfo(url){
   let projectInfo = {};
-  [projectInfo.groupname,projectInfo.projectname,projectInfo.type,projectInfo.mr] =  lodash.split(lodash.split(url,"https://www.lejuhub.com/")[1],'/');
+  [projectInfo.groupname,projectInfo.projectname,projectInfo.type,projectInfo.bar,projectInfo.mr] =  lodash.split(lodash.split(url,"www.lejuhub.com/")[1],'/');
   projectInfo.project = projectInfo.groupname + '/' + projectInfo.projectname;
   projectInfo.mr = parseInt(projectInfo.mr);
   return projectInfo;
+}
+
+function getInstance(){
+  return gitlab_axios_instance;
 }
 
 
@@ -70,5 +74,6 @@ api.QueryProjectMr = QueryProjectMr;
 api.GitlabCommentMr= GitlabCommentMr;
 api.GitlabCommentissue = GitlabCommentissue;
 api.GitlabParseURLInfo = GitlabParseURLInfo;
+api.getInstance = getInstance;
 
 module.exports = api;
