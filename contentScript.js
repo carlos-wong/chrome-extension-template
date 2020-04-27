@@ -16,11 +16,37 @@ function InitPassBtn(){
   }
 }
 
+function InitProductBtn(){
+  let commentDiv = document.querySelector('#notes > div > ul > li > div > div.timeline-content.timeline-content-form > form > div.note-form-actions');
+  let closeissueBtn = document.querySelector('#notes > div > ul > li > div > div.timeline-content.timeline-content-form > form > div.note-form-actions > button');
+  if(commentDiv && closeissueBtn){
+    let commentBtn = document.createElement("Button");       // Create a <li> node
+    commentBtn.className = closeissueBtn.className;
+    commentBtn.style.marginLeft = "6px";
+    commentBtn.style.backgroundColor = "#3399ff";
+    commentBtn.style.borderColor = "#000000";
+    commentBtn.style.color = "#FFFFFF"
+    var textnode = document.createTextNode("Pass the Document Changes");  // Create a text node
+    commentBtn.appendChild(textnode);
+    commentBtn.onclick = HandleProductClick;
+    commentDiv.appendChild(commentBtn);
+  }
+}
+
 function HandlePassClick(){
   let curURL = document.URL;
   let urlInfo = gitlab.GitlabParseURLInfo(curURL);
   console.dir(urlInfo);
   gitlab.GitlabCommentMr(urlInfo.project,urlInfo.mr,"#pass",(data)=>{
+    window.location.reload();
+  });
+}
+
+function HandleProductClick(){
+  let curURL = document.URL;
+  let urlInfo = gitlab.GitlabParseURLInfo(curURL);
+  console.dir(urlInfo);
+  gitlab.GitlabCommentMr(urlInfo.project,urlInfo.mr,"#pass @product_commitee_bot",(data)=>{
     window.location.reload();
   });
 }
@@ -33,6 +59,10 @@ function myMain(){
       let assigneeUsername = data.assignee && data.assignee.username;
       if(assigneeUsername === "softdev_merge_bot"){
         InitPassBtn();
+      }
+
+      if(assigneeUsername === "product_commitee_bot"){
+        InitProductBtn();
       }
     });
   }else{
