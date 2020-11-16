@@ -3,9 +3,9 @@ var gitlab = require('./gitlab');
 
 function InitPassBtn(){
   //
-  let commentDiv = document.querySelector('#notes > div > ul > li > div > div.timeline-content.timeline-content-form > form > div.note-form-actions');
-  let closeissueBtn = document.querySelector('#notes > div > ul > li > div > div.timeline-content.timeline-content-form > form > div.note-form-actions > button');
-  if(commentDiv && closeissueBtn){
+  let commentDiv = document.querySelector("#notes > div > ul > li > div > div.timeline-content.timeline-content-form > form > div.note-form-actions > div");
+  let closeissueBtn = document.querySelector("#notes > div > ul > li > div > div.timeline-content.timeline-content-form > form > div.note-form-actions > div > button.btn.btn-success.js-comment-button.js-comment-submit-button.qa-comment-button");
+  if(commentDiv){
     let commentBtn = document.createElement("Button");       // Create a <li> node
     commentBtn.className = closeissueBtn.className;
     commentBtn.style.marginLeft = "6px";
@@ -17,8 +17,8 @@ function InitPassBtn(){
 }
 
 function InitProductBtn(){
-  let commentDiv = document.querySelector('#notes > div > ul > li > div > div.timeline-content.timeline-content-form > form > div.note-form-actions');
-  let closeissueBtn = document.querySelector('#notes > div > ul > li > div > div.timeline-content.timeline-content-form > form > div.note-form-actions > button');
+  let commentDiv = document.querySelector("#notes > div > ul > li > div > div.timeline-content.timeline-content-form > form > div.note-form-actions > div");
+  let closeissueBtn = document.querySelector("#notes > div > ul > li > div > div.timeline-content.timeline-content-form > form > div.note-form-actions > div > button.btn.btn-success.js-comment-button.js-comment-submit-button.qa-comment-button");
   if(commentDiv && closeissueBtn){
     let commentBtn = document.createElement("Button");       // Create a <li> node
     commentBtn.className = closeissueBtn.className;
